@@ -47,6 +47,15 @@ moviesCompleto<-movies[complete.cases(movies),]
 km<-kmeans(movies, group)
 datos$grupo<-km$cluster
 
-
 plotcluster(movies,km$cluster) #grafica la ubicación de los clusters
 
+
+#Clustering jerárquico
+hc<-hclust(dist(movies)) #Genera el clustering jerárquico de los datos
+plot(hc) #Genera el dendograma
+rect.hclust(hc,k=group) #Dibuja el corte de los grupos en el gráfico
+groups<-cutree(hc,k=group) #corta el dendograma, determinando el grupo de cada fila
+datos$gruposHC<-groups
+
+g1HC<-datos[datos$gruposHC==1,]
+g2HC<-datos[datos$gruposHC==2,]

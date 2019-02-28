@@ -13,7 +13,7 @@ library(fpc) #para hacer el plotcluster
 library(NbClust) #Para determinar el n?mero de clusters ?ptimo
 library(factoextra) #Para hacer gr?ficos bonitos de clustering
 
-setwd("~/U/2019/1er/MineriaDeDatos")
+setwd("~/U/2019/1er/MineriaDeDatos/MD-HT2")
 movies <- read.csv("tmdb-movies.csv")
 
 movies$id <- NULL
@@ -46,6 +46,10 @@ datos<-movies
 moviesCompleto<-movies[complete.cases(movies),]
 km<-kmeans(movies, group)
 datos$grupo<-km$cluster
+
+km
+
+datos$grupo
 
 
 plotcluster(movies,km$cluster) #grafica la ubicación de los clusters
